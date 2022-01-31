@@ -69,7 +69,7 @@ export default {
   created() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        //this.$router.push("/dashboard");
+        this.$router.push("/dashboard");
       } else {
         this.loading = false;
       }
@@ -81,11 +81,8 @@ export default {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.user.email, this.user.password)
-        .then((res) => {
-          console.log(res);
-          console.log(res.user.uid);
-          console.log(res.additionalUserInfo.isNewUser);
-          // this.$router.push("/dashboard");
+        .then(() => {
+          this.$router.push("/dashboard");
         })
         .catch((error) => {
           this.loading = false;
