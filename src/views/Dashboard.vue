@@ -101,7 +101,7 @@
                   height="30"
                   class="rounded-circle"
                 />
-                <span class="d-none d-sm-inline mx-1">Sahil Patel</span>
+                <span class="d-none d-sm-inline mx-1" v-if="this.$store.state.userData">{{this.$store.state.userData.name}}</span>
               </a>
               <ul
                 class="dropdown-menu dropdown-menu-dark dropdown-menu-right text-small"
@@ -119,35 +119,28 @@
           </div>
         </div>
 
-
-
-
-
         <main>
-        <div class="container-fluid p-0">
-          <div class="row mb-2 mb-xl-3">
-            <div class="col-auto d-none d-sm-block">
-              <h3 class="text-white mt-3"> Welcome Back, Sahil.     </h3>
+          <div class="container-fluid p-0">
+            <div class="row mb-2 mb-xl-3">
+              <div class="col-auto d-none d-sm-block">
+                <h3 class="text-white mt-3" v-if="this.$store.state.userData">Welcome Back, {{this.$store.state.userData.name}}.</h3>
+              </div>
+              <div class="col-auto ms-auto text-end mt-n1"></div>
             </div>
-            <div class="col-auto ms-auto text-end mt-n1">
-            </div>
+
+            <router-view />
           </div>
-
-          <router-view />
-
-        </div>
-      </main>
-
-
-
+        </main>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import firebase from 'firebase/compat/app'
-import 'firebase/compat/auth'
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import { getFirestore, doc, getDoc } from "firebase/firestore";
+
 export default {
   name: "Dashboard",
 
@@ -156,13 +149,37 @@ export default {
       menuToggle: "none",
       profileToggle: "none",
       carProfileToggle: "none",
-      
+      firebaseUserID: "",
     };
   },
+  created(){
+
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+
+        this.firebaseUserName = user.displayName
+        this.firebaseUserID = user.uid
+
+
+        const db = getFirestore();
+        getDoc(doc(db, "userDetails", user.uid)).then(docSnap => {
+          if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data());
+            this.$store.state.userData = docSnap.data()
+          } else {
+            console.log("No such document!");
+          }
+        })
+
+      }
+    });
+
+
+  },
   methods: {
-    logout(){
-      firebase.auth()
-              .signOut();
+    logout() {
+      firebase.auth().signOut();
     },
     menuToggler() {
       if (this.menuToggle == "none") {
@@ -171,7 +188,7 @@ export default {
         this.menuToggle = "none";
       }
     },
-    
+
     profileToggler() {
       if (this.profileToggle == "none") {
         this.profileToggle = "block";
@@ -179,7 +196,7 @@ export default {
         this.profileToggle = "none";
       }
     },
-    
+
     carProfileToggler() {
       if (this.carProfileToggle == "none") {
         this.carProfileToggle = "block";
@@ -247,7 +264,7 @@ export default {
   padding-left: 1.75em;
   margin-bottom: -5px;
 }
-.timeline-item::before{
+.timeline-item::before {
   color: var(--darkorange);
   background-color: var(--lightorange);
   border: 3px solid var(--gwhite);

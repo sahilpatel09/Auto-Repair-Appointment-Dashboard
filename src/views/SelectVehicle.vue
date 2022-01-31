@@ -1,13 +1,13 @@
 <template>
   <div class="container-fluid middle">
     <div class="row d-flex justify-content-center align-items-center">
-      <div class="col-md-5">
-        <img class="mb-2 img-fluid rounded" :src="carImage" alt="" height="0" />
+      <div class="col-md-5 text-center">
+        <img class="mb-2 img-fluid rounded carImage" :src="carImage" alt="" />
       </div>
       <div
         class="col-md-5 d-sm-flex justify-content-sm-center d-xs-flex justify-content-xs-center data"
       >
-        <form class="form-signin" @submit.prevent="logit">
+        <form class="form-signin" @submit.prevent="addVehicle">
           <label for="" class="h3">Select Your Vehicle</label>
 
           <select
@@ -90,11 +90,19 @@
 </template>
 
 <script>
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+//import { getFirestore,  doc, setDoc } from "firebase/firestore"
+import { getFirestore, doc, updateDoc } from "firebase/firestore"
+
 export default {
   name: "SelectVehicle",
 
   data() {
     return {
+      carMaker: "",
+      carName: "",
+      carImageString: "",
       carMakesList: {
         Mahindra: {
           name: "Mahindra",
@@ -161,7 +169,22 @@ export default {
       modelHolder: "Choose Model...",
       yearHolder: "Choose Year...",
       carImage: require("@/assets/autologo.png"),
+      firebaseUserID: "",
+      firebaseUserName:"",
     };
+  },
+  created(){
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.firebaseUserName = user.displayName
+        this.firebaseUserID = user.uid
+      } else {
+        this.$router.push("/signup");
+      }
+    });
+
+
   },
   computed: {
     sendModels() {
@@ -173,7 +196,23 @@ export default {
     },
   },
   methods: {
-    logit() {},
+    addVehicle() {
+      const db = getFirestore();
+      try {
+        const updateVehicle = doc(db, "userDetails", this.firebaseUserID);
+        updateDoc(updateVehicle, {
+          carMake: this.makeHolder,
+          carModel: this.modelHolder,
+          carImage: this.carImage,
+          onboarded: "true"
+        });
+        this.$router.push('/dashboard');
+
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+
+    },
     changeImage() {
       this.carImage =
         this.carMakesList[this.makeHolder].models[this.modelHolder].image;
@@ -217,7 +256,7 @@ export default {
 }
 
 .middle {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -308,4 +347,11 @@ export default {
   /* Microsoft Edge */
   color: #a9a9a9;
 }
+
+@media only screen and (max-width: 600px) {
+  .carImage {
+    width: 200px;
+  }
+}
+
 </style>

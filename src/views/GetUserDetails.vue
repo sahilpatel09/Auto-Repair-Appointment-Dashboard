@@ -4,53 +4,42 @@
   </div>
   <div v-else class="text-center form-body">
     <form class="form-signin" @submit.prevent="createUser">
-      <img class="mb-2" src="../assets/autologo.png" alt="" height="170" />
-      <label for="inputName" class="sr-only">Name</label>
+
+      <img class="" src="../assets/autologo.png" alt="" height="170" />
+      <h1 class="mb-2">Add Your Address</h1>
+      <label for="inputName" class="sr-only">Street Name</label>
       <input
         type="text"
-        id="inputName"
+        id="inputStreetName"
         class="form-control"
-        placeholder="Full Name"
-        v-model="user.name"
+        placeholder="Street Name"
+        v-model="address.streetName"
         required
         autofocus
       />
-      <label for="inputEmail" class="sr-only">Email address</label>
+      <label for="inputUnit" class="sr-only">Unit no</label>
       <input
-        type="email"
-        id="inputEmail"
+        type="text"
+        id="inputUnit"
         class="form-control"
-        placeholder="Email address"
-        v-model="user.email"
+        placeholder="Unit no"
+        v-model="address.unit"
         required
         autofocus
       />
-      <label for="inputPassword" class="sr-only">Password</label>
+      <label for="inputLocation" class="sr-only">Location</label>
       <input
-        type="password"
-        id="inputPassword"
+        type="text"
+        id="inputLocation"
         class="form-control"
-        placeholder="Password"
-        v-model="user.password"
+        placeholder="City ZIP Ex: Saskatoon S7M 3R5 "
+        v-model="address.provinceZip"
         required
       />
-      <div class="checkbox mb-3">
-        <label class="whiteColor">
-          <input type="checkbox" value="remember-me" class="whiteColor" />
-          Remember me
-        </label>
-      </div>
 
       <button class="btn btn-lg buttonColor btn-block" type="submit">
         Sign up
       </button>
-      <div class="checkbox mb-3">
-        <label class="acc">
-          <span class="whiteColor">Already have an account.</span>
-          <a href="/" class="link text-decoration-none">Log in.</a>
-        </label>
-      </div>
-      <br />
       <p class="text-warning" v-if="warning">Error: {{ warning }}</p>
       <p class="mt-5 mb-3 text-muted">
         &copy; {{ new Date().getFullYear() }} All Rights Reserved. |
@@ -63,76 +52,61 @@
 <script>
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-//import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore"
+//import { getFirestore, collection, addDoc } from "firebase/firestore"
+import { getFirestore,  doc, setDoc } from "firebase/firestore"
 
 export default {
-  name: "SignUp",
+  name: "GetUserDetails",
 
   data() {
     return {
-      user: {
-        name: "",
-        email: "",
-        password: "",
+      address: {
+        streetName: "",
+        unit: "",
+        provinceZip: "",
       },
-      sloading: true,
+      firebaseUserID: null,
+      firebaseUserName: "",
+      sloading: false,
       warning: "",
     };
   },
   created() {
+
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.$router.push("/dashboard");
+        this.firebaseUserName = user.displayName
+        this.firebaseUserID = user.uid
       } else {
-        this.sloading = false;
+        this.$router.push("/signup");
       }
     });
+
   },
   methods: {
     createUser() {
       this.sloading = true;
+
+     const db = getFirestore();
       
-      
-      // try {
-      //   const docRef = addDoc(collection(db, "userDetails"), {
-      //     first: "Ada",
-      //     last: "Lovelace",
-      //     born: 1815
-      //   });
-      //   console.log("Document written with ID: ", docRef.id);
-      // } catch (e) {
-      //   console.error("Error adding document: ", e);
-      // }
+      try {
 
-      // const querySnapshot = getDocs(collection(db, "users"));
-      // querySnapshot.forEach((doc) => {
-      //   console.log(`${doc.id} => ${doc.data()}`);
-      // });
-
-
-
-
-
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.user.email, this.user.password)
-        .then((data) => {
-          
-          data.user
-            .updateProfile({
-              displayName: this.user.name,
-            })
-            .then(() => {
-              this.$router.push("/userdetails");
-            });
-
-
-
-        })
-        .catch((err) => {
-          this.sloading = false;
-          this.warning = err.message.split(":")[1];
+        const docRef = setDoc(doc(db, "userDetails", this.firebaseUserID), {
+          name: this.firebaseUserName,
+          addressUnit: this.address.unit,
+          addressStreetName: this.address.streetName,
+          addressCityZip: this.address.provinceZip,
+          id: this.firebaseUserID,
+          onboarded: "false"
         });
+        this.$router.push('select-vehicle');
+
+
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+
 
 
     },

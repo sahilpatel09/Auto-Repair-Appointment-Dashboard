@@ -14,9 +14,18 @@ const firebaseConfig = {
   appId: "1:796477443660:web:139087f1c076e3a0ea2ee9",
   measurementId: "G-K57K9K20SQ",
 };
+
 firebase.initializeApp(firebaseConfig);
 const app = createApp(App);
 app.use(store);
 app.use(router);
 app.config.globalProperties.$myGlobalVariable = "CALIFORNIA MUSCLE CAR REPAIR";
 app.mount("#app");
+
+
+
+
+
+
+
+

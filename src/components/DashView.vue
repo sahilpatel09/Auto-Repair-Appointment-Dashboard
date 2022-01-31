@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row" v-if="this.$store.state.userData">
     <div class="col-12 col-lg-8 d-flex">
       <div class="card flex-fill w-100 bg-dark">
         <div class="card-header bg-dark">
@@ -18,12 +18,12 @@
               </div>
             </div>
           </div>
-          <h5 class="card-title mb-0 text-white">Audi A6 2012</h5>
+          <h5 class="card-title mb-0 text-white">{{this.$store.state.userData.carMake}} {{this.$store.state.userData.carModel}} </h5>
         </div>
         <div class="card-body d-flex w-100">
           <div class="align-self-center">
             <img
-              src="https://stimg.cardekho.com/images/carexteriorimages/930x620/Audi/A6/6426/1571906388003/front-left-side-47.jpg?tr=w-880,h-495"
+              :src="this.$store.state.userData.carImage"
               class="img-fluid"
             />
           </div>

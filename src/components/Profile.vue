@@ -1,190 +1,356 @@
 <template>
-	<div class="container-fluid p-0">
+  <div class="container-fluid p-0">
+    <h1 class="h3 mb-3">Settings</h1>
 
-					<h1 class="h3 mb-3">Settings</h1>
+    <div class="row">
+      <!-- <div class="col-md-3 col-xl-2">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title mb-0">Profile Settings</h5>
+          </div>
 
-					<div class="row">
-						<div class="col-md-3 col-xl-2">
+          <div class="list-group list-group-flush" role="tablist">
+            <a
+              class="list-group-item list-group-item-action active"
+              data-bs-toggle="list"
+              href="#account"
+              role="tab"
+              aria-selected="true"
+            >
+              Account
+            </a>
+            <a
+              class="list-group-item list-group-item-action"
+              data-bs-toggle="list"
+              href="#password"
+              role="tab"
+              aria-selected="false"
+            >
+              Password
+            </a>
+            <a
+              class="list-group-item list-group-item-action"
+              data-bs-toggle="list"
+              href="#"
+              role="tab"
+              aria-selected="false"
+            >
+              Privacy and safety
+            </a>
+            <a
+              class="list-group-item list-group-item-action"
+              data-bs-toggle="list"
+              href="#"
+              role="tab"
+              aria-selected="false"
+            >
+              Email notifications
+            </a>
+            <a
+              class="list-group-item list-group-item-action"
+              data-bs-toggle="list"
+              href="#"
+              role="tab"
+              aria-selected="false"
+            >
+              Web notifications
+            </a>
+            <a
+              class="list-group-item list-group-item-action"
+              data-bs-toggle="list"
+              href="#"
+              role="tab"
+              aria-selected="false"
+            >
+              Widgets
+            </a>
+            <a
+              class="list-group-item list-group-item-action"
+              data-bs-toggle="list"
+              href="#"
+              role="tab"
+            >
+              Your data
+            </a>
+            <a
+              class="list-group-item list-group-item-action"
+              data-bs-toggle="list"
+              href="#"
+              role="tab"
+            >
+              Delete account
+            </a>
+          </div>
+        </div>
+      </div>
+ -->
+      <div class="col-md-12 col-xl-12 p-3">
+        <div class="tab-content">
+          <div class="tab-pane fade active show" id="account" role="tabpanel">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-actions float-end">
+                  <div class="dropdown position-relative">
+                    <a
+                      href="#"
+                      data-bs-toggle="dropdown"
+                      data-bs-display="static"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-more-horizontal align-middle"
+                        data-darkreader-inline-stroke=""
+                        style="--darkreader-inline-stroke: currentColor"
+                      >
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="19" cy="12" r="1"></circle>
+                        <circle cx="5" cy="12" r="1"></circle>
+                      </svg>
+                    </a>
 
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title mb-0">Profile Settings</h5>
-								</div>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="card-title mb-0">Public info</h5>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="mb-3">
+                        
+                        <label for="inputUsername" class="form-label"
+                          >Username</label
+                        >
+                        
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputUsername"
+                          placeholder="Username"
+                        />
 
-								<div class="list-group list-group-flush" role="tablist">
-									<a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#account" role="tab" aria-selected="true">
-          Account
-        </a>
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#password" role="tab" aria-selected="false">
-          Password
-        </a>
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#" role="tab" aria-selected="false">
-          Privacy and safety
-        </a>
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#" role="tab" aria-selected="false">
-          Email notifications
-        </a>
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#" role="tab" aria-selected="false">
-          Web notifications
-        </a>
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#" role="tab" aria-selected="false">
-          Widgets
-        </a>
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#" role="tab">
-          Your data
-        </a>
-									<a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#" role="tab">
-          Delete account
-        </a>
-								</div>
-							</div>
-						</div>
+                      </div>
+                      <div class="mb-3">
+                        
+                        <label for="inputUsername" class="form-label"
+                          >Biography</label
+                        >
+                        
+                        <textarea
+                          rows="2"
+                          class="form-control"
+                          id="inputBio"
+                          placeholder="Tell something about yourself"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="text-center">
+                        <img
+                          alt="Chris Wood"
+                          src="img/avatars/avatar.jpg"
+                          class="rounded-circle img-responsive mt-2"
+                          width="128"
+                          height="128"
+                        />
+                        <div class="mt-2">
+                          <span class="btn btn-primary"
+                            ><i class="fas fa-upload"></i> Upload</span
+                          >
+                        </div>
+                        <small
+                          >For best results, use an image at least 128px by
+                          128px in .jpg format</small
+                        >
+                      </div>
+                    </div>
+                  </div>
 
-						<div class="col-md-9 col-xl-10">
-							<div class="tab-content">
-								<div class="tab-pane fade active show" id="account" role="tabpanel">
+                  <button type="submit" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </form>
+              </div>
+            </div>
 
-									<div class="card">
-										<div class="card-header">
-											<div class="card-actions float-end">
-												<div class="dropdown position-relative">
-													<a href="#" data-bs-toggle="dropdown" data-bs-display="static">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-                </a>
+            <div class="card">
+              <div class="card-header">
+                <div class="card-actions float-end">
+                  <div class="dropdown position-relative">
+                    <a
+                      href="#"
+                      data-bs-toggle="dropdown"
+                      data-bs-display="static"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-more-horizontal align-middle"
+                        data-darkreader-inline-stroke=""
+                        style="--darkreader-inline-stroke: currentColor"
+                      >
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="19" cy="12" r="1"></circle>
+                        <circle cx="5" cy="12" r="1"></circle>
+                      </svg>
+                    </a>
 
-													<div class="dropdown-menu dropdown-menu-end">
-														<a class="dropdown-item" href="#">Action</a>
-														<a class="dropdown-item" href="#">Another action</a>
-														<a class="dropdown-item" href="#">Something else here</a>
-													</div>
-												</div>
-											</div>
-											<h5 class="card-title mb-0">Public info</h5>
-										</div>
-										<div class="card-body">
-											<form>
-												<div class="row">
-													<div class="col-md-8">
-														<div class="mb-3">
-															<label for="inputUsername" class="form-label">Username</label>
-															<input type="text" class="form-control" id="inputUsername" placeholder="Username">
-														</div>
-														<div class="mb-3">
-															<label for="inputUsername" class="form-label">Biography</label>
-															<textarea rows="2" class="form-control" id="inputBio" placeholder="Tell something about yourself"></textarea>
-														</div>
-													</div>
-													<div class="col-md-4">
-														<div class="text-center">
-															<img alt="Chris Wood" src="img/avatars/avatar.jpg" class="rounded-circle img-responsive mt-2" width="128" height="128">
-															<div class="mt-2">
-																<span class="btn btn-primary"><i class="fas fa-upload"></i> Upload</span>
-															</div>
-															<small>For best results, use an image at least 128px by 128px in .jpg format</small>
-														</div>
-													</div>
-												</div>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                  </div>
+                </div>
+                <h5 class="card-title mb-0">Private info</h5>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="mb-3 col-md-6">
+                      <label for="inputFirstName" class="form-label"
+                        >First name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputFirstName"
+                        placeholder="First name"
+                      />
+                    </div>
+                    <div class="mb-3 col-md-6">
+                      <label for="inputLastName" class="form-label"
+                        >Last name</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputLastName"
+                        placeholder="Last name"
+                      />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="inputEmail4"
+                      placeholder="Email"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputAddress" class="form-label">Address</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputAddress"
+                      placeholder="1234 Main St"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputAddress2" class="form-label"
+                      >Address 2</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="inputAddress2"
+                      placeholder="Apartment, studio, or floor"
+                    />
+                  </div>
+                  <div class="row">
+                    <div class="mb-3 col-md-6">
+                      <label for="inputCity" class="form-label">City</label>
+                      <input type="text" class="form-control" id="inputCity" />
+                    </div>
+                    <div class="mb-3 col-md-4">
+                      <label for="inputState" class="form-label">State</label>
+                      <select id="inputState" class="form-control">
+                        <option selected="">Choose...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="mb-3 col-md-2">
+                      <label for="inputZip" class="form-label">Zip</label>
+                      <input type="text" class="form-control" id="inputZip" />
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="password" role="tabpanel">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Password</h5>
 
-												<button type="submit" class="btn btn-primary">Save changes</button>
-											</form>
+                <form>
+                  <div class="mb-3">
+                    <label for="inputPasswordCurrent" class="form-label"
+                      >Current password</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="inputPasswordCurrent"
+                    />
+                    <small><a href="#">Forgot your password?</a></small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputPasswordNew" class="form-label"
+                      >New password</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="inputPasswordNew"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="inputPasswordNew2" class="form-label"
+                      >Verify password</label
+                    >
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="inputPasswordNew2"
+                    />
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-										</div>
-									</div>
-
-									<div class="card">
-										<div class="card-header">
-											<div class="card-actions float-end">
-												<div class="dropdown position-relative">
-													<a href="#" data-bs-toggle="dropdown" data-bs-display="static">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle" data-darkreader-inline-stroke="" style="--darkreader-inline-stroke:currentColor;"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
-                </a>
-
-													<div class="dropdown-menu dropdown-menu-end">
-														<a class="dropdown-item" href="#">Action</a>
-														<a class="dropdown-item" href="#">Another action</a>
-														<a class="dropdown-item" href="#">Something else here</a>
-													</div>
-												</div>
-											</div>
-											<h5 class="card-title mb-0">Private info</h5>
-										</div>
-										<div class="card-body">
-											<form>
-												<div class="row">
-													<div class="mb-3 col-md-6">
-														<label for="inputFirstName" class="form-label">First name</label>
-														<input type="text" class="form-control" id="inputFirstName" placeholder="First name">
-													</div>
-													<div class="mb-3 col-md-6">
-														<label for="inputLastName" class="form-label">Last name</label>
-														<input type="text" class="form-control" id="inputLastName" placeholder="Last name">
-													</div>
-												</div>
-												<div class="mb-3">
-													<label for="inputEmail4" class="form-label">Email</label>
-													<input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-												</div>
-												<div class="mb-3">
-													<label for="inputAddress" class="form-label">Address</label>
-													<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-												</div>
-												<div class="mb-3">
-													<label for="inputAddress2" class="form-label">Address 2</label>
-													<input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-												</div>
-												<div class="row">
-													<div class="mb-3 col-md-6">
-														<label for="inputCity" class="form-label">City</label>
-														<input type="text" class="form-control" id="inputCity">
-													</div>
-													<div class="mb-3 col-md-4">
-														<label for="inputState" class="form-label">State</label>
-														<select id="inputState" class="form-control">
-                    <option selected="">Choose...</option>
-                    <option>...</option>
-                  </select>
-													</div>
-													<div class="mb-3 col-md-2">
-														<label for="inputZip" class="form-label">Zip</label>
-														<input type="text" class="form-control" id="inputZip">
-													</div>
-												</div>
-												<button type="submit" class="btn btn-primary">Save changes</button>
-											</form>
-
-										</div>
-									</div>
-
-								</div>
-								<div class="tab-pane fade" id="password" role="tabpanel">
-									<div class="card">
-										<div class="card-body">
-											<h5 class="card-title">Password</h5>
-
-											<form>
-												<div class="mb-3">
-													<label for="inputPasswordCurrent" class="form-label">Current password</label>
-													<input type="password" class="form-control" id="inputPasswordCurrent">
-													<small><a href="#">Forgot your password?</a></small>
-												</div>
-												<div class="mb-3">
-													<label for="inputPasswordNew" class="form-label">New password</label>
-													<input type="password" class="form-control" id="inputPasswordNew">
-												</div>
-												<div class="mb-3">
-													<label for="inputPasswordNew2" class="form-label">Verify password</label>
-													<input type="password" class="form-control" id="inputPasswordNew2">
-												</div>
-												<button type="submit" class="btn btn-primary">Save changes</button>
-											</form>
-
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-md-4 col-xl-3">
+      <!-- <div class="col-md-4 col-xl-3">
 							<div class="card mb-3">
 								<div class="card-header">
 									<h5 class="card-title mb-0">Profile Details</h5>
@@ -234,28 +400,19 @@
 									</ul>
 								</div>
 							</div>
-						</div>
-
-
-
-
-					</div>
-
-				</div>
+						</div> -->
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
+  name: "Profile",
 
-  name: 'Profile',
-
-  data () {
-    return {
-
-    }
-  }
-}
+  data() {
+    return {};
+  },
+};
 </script>
 
-<style lang="css" scoped>
-</style>
+<style lang="css" scoped></style>
